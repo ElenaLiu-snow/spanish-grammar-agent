@@ -1,0 +1,244 @@
+@import "tailwindcss";
+
+:root {
+  --background: #1d1813;
+  --foreground: #2f241c;
+  --paper: #fff8e8;
+  --paper-deep: #f1ddb6;
+  --ink: #2f241c;
+  --burgundy: #7a2f3a;
+  --green: #315f57;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Cormorant Garamond", "Times New Roman", "Songti SC", "Noto Serif CJK SC", serif;
+  --font-mono: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.font-script {
+  font-family: "Snell Roundhand", "Apple Chancery", "Brush Script MT", "Segoe Script", cursive;
+  letter-spacing: 0;
+}
+
+.assistant-panel {
+  height: auto;
+  min-height: 0;
+}
+
+@media (min-width: 768px) {
+  .assistant-panel {
+    min-height: 620px;
+    height: min(860px, calc(100svh - 8.75rem));
+  }
+}
+
+.assistant-message-scroll {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.hero-enter {
+  opacity: 0;
+  transform: translateY(24px) scale(0.985);
+  animation: hero-rise 680ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.hero-enter-nav {
+  animation-delay: 30ms;
+}
+
+.hero-enter-chat {
+  animation-delay: 120ms;
+}
+
+.hero-enter-cue {
+  animation-delay: 260ms;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(42px) scale(0.985);
+  transition:
+    opacity 800ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 800ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.folio-card {
+  min-height: 18rem;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-enter,
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+}
+
+.saenredam-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(90deg, rgba(29, 24, 19, 0.72), rgba(59, 46, 34, 0.28) 42%, rgba(255, 248, 232, 0.1)),
+    linear-gradient(180deg, rgba(29, 24, 19, 0.28), rgba(29, 24, 19, 0.7)),
+    url("/images/saenredam-church-interior.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.saenredam-bg-soft {
+  filter: saturate(0.8);
+  opacity: 0.82;
+}
+
+.vintage-scrollbar {
+  scrollbar-color: #b8895b #f6e7c6;
+  scrollbar-width: thin;
+}
+
+.vintage-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.vintage-scrollbar::-webkit-scrollbar-track {
+  background: #f6e7c6;
+}
+
+.vintage-scrollbar::-webkit-scrollbar-thumb {
+  background: #b8895b;
+  border: 2px solid #f6e7c6;
+  border-radius: 999px;
+}
+
+.markdown-body.rae-markdown {
+  color: #3d3027;
+}
+
+.markdown-body.rae-markdown h1 {
+  margin: 0 0 1.5rem;
+  border-bottom: 1px solid #d8c7a7;
+  padding-bottom: 1rem;
+  color: #251a14;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 1.05;
+}
+
+.markdown-body.rae-markdown h2 {
+  margin-top: 3rem;
+  border-top: 1px solid #d8c7a7;
+  padding-top: 2.25rem;
+  color: #251a14;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.18;
+}
+
+.markdown-body.rae-markdown h3 {
+  margin-top: 2rem;
+  color: #533627;
+  font-size: 1.55rem;
+  line-height: 1.25;
+}
+
+.markdown-body.rae-markdown h4 {
+  margin-top: 1.25rem;
+  color: #315f57;
+  font-size: 1.25rem;
+}
+
+.markdown-body.rae-markdown p,
+.markdown-body.rae-markdown li {
+  color: #4d4035;
+  font-size: 1.03rem;
+  line-height: 1.9;
+}
+
+.markdown-body.rae-markdown ul,
+.markdown-body.rae-markdown ol {
+  margin: 1rem 0 1.5rem;
+  padding-left: 1.2rem;
+}
+
+.markdown-body.rae-markdown code {
+  border: 1px solid #d9c59a;
+  border-radius: 4px;
+  background: #efe0bd;
+  color: #7a2f3a;
+  padding: 0.1rem 0.35rem;
+}
+
+.markdown-body.rae-markdown blockquote {
+  border-left: 4px solid #7a2f3a;
+  background: #f4ead3;
+  color: #4d4035;
+}
+
+.markdown-body.rae-markdown table {
+  background: #fffaf0;
+}
+
+.markdown-body.rae-markdown thead {
+  background: #ead7ad;
+}
+
+.markdown-body.rae-markdown th,
+.markdown-body.rae-markdown td {
+  border-color: #dccaa9;
+  color: #3d3027;
+}
+
+.markdown-body.rae-markdown a {
+  color: #7a2f3a;
+  text-decoration-color: #b8895b;
+  text-underline-offset: 4px;
+}
