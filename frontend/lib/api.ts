@@ -1,6 +1,8 @@
 // API 客户端 - 用于与后端通信
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001';
+// 部署到 Vercel 后，API routes 与前端同域，无需配置额外 URL。
+// 本地开发时如需连接独立后端，设置 NEXT_PUBLIC_API_URL=http://localhost:8001
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
 
 export interface ChatMessage {
   role: 'user' | 'assistant';
